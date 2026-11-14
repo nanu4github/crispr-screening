@@ -10,13 +10,13 @@
 
 前面我们介绍了CRISPR screening以及其多种变式，今天我们聚焦在pooled CRISPR screening，即对分选或者是不同处理下的两群细胞分别进行bulk测序。然后通过将序列比对到sgRNA上，对sgRNA进行定量。随后通过比较和检验查看sgRNA丰度和富集耗竭情况。\[[https://www.cnblogs.com/DoughWithoutYeast/articles/20745282](00-crispr-screening-intro.md)\]\
 这里我们主要使用MAGeCK这个软件。该软件是，刘小乐教授团队开发的。该软件是目前使用最多最权威的软件。同时它有详细的教程和帮助文档以及论坛。最后它不断更新迭代，推出了多个衍生的软件。\
-![image](3805523-20260623220128964-1110648124.png)
+![image](/Illustration/3805523-20260623220128964-1110648124.png)
 
 MAGeCK文献：`MAGeCK enables robust identification of essential genes from genome-scale CRISPR/Cas9 knockout screens`\
 MAGeCK官网：`https://sourceforge.net/p/mageck/wiki/Home/`
 
 MAGeCK主要建模的原理是：\
-![image](3805523-20260625113415070-41368824.png)
+![image](/Illustration/3805523-20260625113415070-41368824.png)
 
 # 0-安装MAGeCK
 
