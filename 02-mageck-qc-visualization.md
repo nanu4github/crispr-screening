@@ -74,9 +74,9 @@ plot_sum(summary, 'GiniIndex')
 结果展示：
 
 * percentage\
-  ![image](3805523-20260706210851551-28650292.png)
+  ![image](/Illustration/3805523-20260706210851551-28650292.png)
 * gini index\
-  ![image](3805523-20260706210930687-590923055.png)
+  ![image](/Illustration/3805523-20260706210930687-590923055.png)
 
 PS：我码掉了我的sample信息
 
@@ -421,7 +421,7 @@ plot_volcano_label(
 </details>
 
 结果展示：
-![博客园图片](3805523-20260819153600203-450703807.png)
+![博客园图片](/Illustration/3805523-20260819153600203-450703807.png)
 
 ### after these
 
