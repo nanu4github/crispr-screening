@@ -1,14 +1,6 @@
-# 1-使用MAGeCK分析pooled CRISPR screening数据
+# 0-简要介绍MAGeCK
+前面我们介绍了CRISPR screening以及其多种变式，今天我们聚焦在pooled CRISPR screening，即对分选或者是不同处理下的两群细胞分别进行bulk测序。然后通过将序列比对到sgRNA上，对sgRNA进行定量。随后通过比较和检验查看sgRNA丰度和富集耗竭情况。[简介](00-crispr-screening-intron.md)
 
-作者 · 不加酵母的面团（DoughWithoutYeast）
-
-原发表于 2026-06-25 · [博客园原文](https://www.cnblogs.com/DoughWithoutYeast/p/20746147)
-
-原文更新于 2026-08-19
-
-标签 · CRISPR screening
-
-前面我们介绍了CRISPR screening以及其多种变式，今天我们聚焦在pooled CRISPR screening，即对分选或者是不同处理下的两群细胞分别进行bulk测序。然后通过将序列比对到sgRNA上，对sgRNA进行定量。随后通过比较和检验查看sgRNA丰度和富集耗竭情况。\[[https://www.cnblogs.com/DoughWithoutYeast/articles/20745282](00-crispr-screening-intro.md)\]\
 这里我们主要使用MAGeCK这个软件。该软件是，刘小乐教授团队开发的。该软件是目前使用最多最权威的软件。同时它有详细的教程和帮助文档以及论坛。最后它不断更新迭代，推出了多个衍生的软件。\
 ![image](/Illustration/3805523-20260623220128964-1110648124.png)
 
@@ -18,7 +10,7 @@ MAGeCK官网：`https://sourceforge.net/p/mageck/wiki/Home/`
 MAGeCK主要建模的原理是：\
 ![image](/Illustration/3805523-20260625113415070-41368824.png)
 
-# 0-安装MAGeCK
+# 1-安装MAGeCK
 
 我的习惯是，在conda中创建一个专用于MAGeCK的环境，其中包含了这个分析所需要的各种软件。
 
@@ -27,8 +19,11 @@ mamba create -n mageck -c bioconda -c conda-forge mageck fastqc multiqc
 ```
 
 随后当我需分析数据的时候我会提前激活这个环境。
+```bash
+conda activate mageck
+```
 
-# 1-MAGeCK部分
+# 2-MAGeCK部分
 
 ## （1）数据基本质控
 
