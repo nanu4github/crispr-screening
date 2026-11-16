@@ -1,16 +1,7 @@
-# 2-MAGeCK下游质控和可视化结果
 
-作者 · 不加酵母的面团（DoughWithoutYeast）
+# 下游基本分析
 
-原发表于 2026-08-19 · [博客园原文](https://www.cnblogs.com/DoughWithoutYeast/p/20760163)
-
-原文更新于 2026-10-26
-
-标签 · CRISPR screening
-
-## 下游基本分析
-
-### 1.文库质控
+## 1.文库质控
 
 文库质控主要是看`MAGeCK count`模块下输出的文件`*.countsummary.txt`内的指标\
 我们主要关注的是`Percentage`和`GiniIndex`这两指标。
@@ -80,7 +71,7 @@ plot_sum(summary, 'GiniIndex')
 
 PS：我码掉了我的sample信息
 
-### 2.样品质控
+## 2.样品质控
 
 样品质控我们主要通过样品之间的相关性热图和PCA降维聚类散点图来评估。注意，如果数据不含生物学重复，则这两个方面没有什么参考价值，因为我们做相关性热图和PCA降维聚类图主要是看生物学重复的相关性和相似性。
 
@@ -185,7 +176,7 @@ plot_PCA(count, NULL)
 !\[image\](https://img2024.cnblogs.com/blog/3805523/202607/3805523-20260706211156020-1172508008.png)
 像是这里，质粒的举例就比我的处理后的相互之间更加接近。
 
-### 3.重复性评估
+## 3.重复性评估
 
 这里我们主要是看的sgRNA在不同的生物学重复之间的标准化count的重复性。用颜色深浅来表示sgRNA密度。
 
@@ -228,7 +219,7 @@ plot_repeatability_log10(count, "con1", "before_con",'Scatters between con1 and 
 结果展示：
 !\[image\](https://img2024.cnblogs.com/blog/3805523/202607/3805523-20260706211333447-432772424.png)
 
-### 4.火山图
+## 4.火山图
 
 这里主要是对test结果在gene level的展示，我们可以highlight一些TOP的基因。\
 这里有两个函数：
@@ -295,7 +286,7 @@ throw_data_back <- function(df,
         TRUE ~ "grey70"
       ),
       
-      ## 👉 画火山图用哪个显著性值
+      ## 画火山图用哪个显著性值
       plot_sig = case_when(
         change == "sig_in_neg" ~ .data[[sig_col_neg]],
         change == "sig_in_pos" ~ .data[[sig_col_pos]],
@@ -303,7 +294,7 @@ throw_data_back <- function(df,
       )
     )
   
-  message("📊 significance summary:")
+  message("significance summary:")
   print(table(df_new$change))
   
   return(df_new)
@@ -314,8 +305,8 @@ plot_volcano_label <- function(df,
                                sig_cutoff = 0.05,
                                lfc_cutoff = log2(1.5),
                                title = "Volcano Plot",
-                               label_col = "id",          # 👉 基因名列
-                               label_top_n = 10,          # 👉 每侧最多标多少个
+                               label_col = "id",          #  基因名列
+                               label_top_n = 10,          #  每侧最多标多少个
                                save = FALSE,
                                save_file_name = NULL) {
   
@@ -360,7 +351,7 @@ plot_volcano_label <- function(df,
     }
     
     openxlsx::write.xlsx(df_plot, file = save_file_name)
-    message("✅ plot data saved to: ", save_file_name)
+    message("plot data saved to: ", save_file_name)
   }
   
   ## ---------- 画图 ----------
@@ -389,7 +380,7 @@ plot_volcano_label <- function(df,
                color = "gray",
                linewidth = 0.5) +
     
-    ## 👉 自动避让的标签
+    ##  自动避让的标签
     ggrepel::geom_text_repel(
       data = df_label,
       aes(label = .data[[label_col]]),
@@ -423,7 +414,7 @@ plot_volcano_label(
 结果展示：
 ![博客园图片](/Illustration/3805523-20260819153600203-450703807.png)
 
-### after these
+## after these
 
 基本的下游质控和分析就结束啦\~\
 下面一篇，将和大家分享一下如何检查screening中出现的异常！请关注噢\~
